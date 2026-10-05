@@ -63,7 +63,7 @@ n/r: not reported, because the WESAD reference is derived from the ECG. Three tr
 
 ### Accuracy under motion
 
-![Error by wrist-motion tercile](figures/fig2.jpg)
+![Error by wrist-motion tercile](figures/fig2.png)
 
 In the high-motion tercile the wrist error is 9.26 bpm, 28.8% lower than the Deep-PPG-style network (13.01 bpm) and 66.6% lower than FFT (27.69 bpm). Across activities it ranges from 2.96 bpm (sitting) to 15.89 bpm (stairs).
 
@@ -88,11 +88,11 @@ Without the hard bound, the phase ODE residual breaks the model (49.97 bpm, bias
 
 ### Usefulness of the predicted uncertainty
 
-![Risk-coverage curves](figures/fig3.jpg)
+![Risk-coverage curves](figures/fig3.png)
 
 The predicted σ tracks the error (Spearman 0.575). Keeping the windows with the smallest σ lowers the window-level error from 5.61 bpm to 3.31 bpm at 75% coverage and to 1.96 bpm at 50% coverage. The area under the risk-coverage curve is 2.57 for σ, against 3.54 for a PPG quality index and 4.25 for the phase-ODE residual.
 
-![Reliability diagram](figures/fig4.jpg)
+![Reliability diagram](figures/fig4.png)
 
 The intervals are calibrated, with an expected calibration error of 0.070 for the wrist readout (0.070 to 0.112 across seeds) and 0.051 for the fusion. Coverage is 0.883 at the nominal 90% level.
 
