@@ -4,7 +4,7 @@ Code for the IEEE Sensors Letters submission *Physiologically Constrained Phase-
 
 The project asks a simple question: when physiological knowledge is added to a compact heart-rate network, should it be built into the architecture or added to the loss? A phase-rate network is proposed in which heart rate is read from the speed of a latent cardiac phase. That speed is held inside a physiological range (30 to 230 bpm) by a hard constraint, and every estimate comes with a calibrated uncertainty. The same network is then trained with soft physics-informed (PINN) losses for comparison.
 
-![Graphical abstract](figures/graphical_abstract.png)
+![Graphical abstract](figures/fig0.png)
 
 ## Main findings
 
@@ -18,7 +18,7 @@ Physiological knowledge is thus best placed in the architecture rather than in t
 
 ## Method
 
-![Method overview](figures/fig1_architecture.png)
+![Method overview](figures/fig1.png)
 
 Each sensor (chest ECG, wrist PPG) has its own branch. A window is encoded by two 1-D convolutions and a bidirectional GRU, and a phase-rate head produces:
 
@@ -63,7 +63,7 @@ n/r: not reported, because the WESAD reference is derived from the ECG. Three tr
 
 ### Accuracy under motion
 
-![Error by wrist-motion tercile](figures/fig2_motion_terciles.png)
+![Error by wrist-motion tercile](figures/fig2.pdf)
 
 In the high-motion tercile the wrist error is 9.26 bpm, 28.8% lower than the Deep-PPG-style network (13.01 bpm) and 66.6% lower than FFT (27.69 bpm). Across activities it ranges from 2.96 bpm (sitting) to 15.89 bpm (stairs).
 
@@ -88,11 +88,11 @@ Without the hard bound, the phase ODE residual breaks the model (49.97 bpm, bias
 
 ### Usefulness of the predicted uncertainty
 
-![Risk-coverage curves](figures/fig3_risk_coverage.png)
+![Risk-coverage curves](figures/fig3.pdf)
 
 The predicted σ tracks the error (Spearman 0.575). Keeping the windows with the smallest σ lowers the window-level error from 5.61 bpm to 3.31 bpm at 75% coverage and to 1.96 bpm at 50% coverage. The area under the risk-coverage curve is 2.57 for σ, against 3.54 for a PPG quality index and 4.25 for the phase-ODE residual.
 
-![Reliability diagram](figures/fig4_reliability_diagram.png)
+![Reliability diagram](figures/fig4.pdf)
 
 The intervals are calibrated, with an expected calibration error of 0.070 for the wrist readout (0.070 to 0.112 across seeds) and 0.051 for the fusion. Coverage is 0.883 at the nominal 90% level.
 
